@@ -35,7 +35,7 @@ public class Library{
 	private List<Book> titles = new ArrayList<Book>();
 	private String printAvailableBooks;
 	private String printAddress;
-	private String removeABook;
+	private Book removeABook;
 	
 	//Create a new Library (checkmark)
     public Library(String printAddress) {
@@ -87,12 +87,12 @@ public class Library{
 
 
 	public void borrowBook(String bookToBorrow) {
-		if(titles.size() > 0) {
-			outer:
+		if(titles.size() > 0 && titles.toString().contains(bookToBorrow)) {
+			outer: 
 			for(int i=0; i<titles.size(); i++){
 					inner:
 					if(titles.get(i).toString().equals(bookToBorrow)){
-						titles.remove(i);
+						removeABook = titles.remove(i);
 						System.out.println("You have successfully borrowed " +bookToBorrow);
 						continue outer;
 					}else {
@@ -100,8 +100,11 @@ public class Library{
 					}
 			}
 		}else {
-			System.out.println("This book is not available.");
-
+			if(this.removeABook != null) {
+				System.out.println("This book is currently not available.");
+			}else {
+			System.out.println("This book is not in our catalog.");
+			}
 		}
 	}
 	
