@@ -48,4 +48,9 @@ public class Book {
         example.returned();
         System.out.println("Borrowed? (should be false): " + example.isBorrowed());
     }
+
+	@Override
+	public String toString() {
+		return "Book [title=" + title + "]";
+	}
 } 
