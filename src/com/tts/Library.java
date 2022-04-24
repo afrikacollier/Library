@@ -71,7 +71,7 @@ public class Library{
 	public String printAvailableBooks() {
 		// TODO Auto-generated method stub
 		String totalBooks ="";
-		if(titles != null) {
+		if(titles.size() > 0) {
 			for(int i = 0; i<titles.size(); i++) {
 				Book b = titles.get(i);
 				totalBooks = totalBooks +"\n"+ b.toString(); 
@@ -86,15 +86,24 @@ public class Library{
 	}
 
 
-	/*public void borrowBook(String bookToBorrow) {
-		for(int i = 0; i<titles.size();i++) {
-			if(titles.get(i).equals(bookToBorrow)) {
-				removeABook = titles.get(i);
-			}else {
-				System.out.println("Book is unavailable to borrow.");
+	public void borrowBook(String bookToBorrow) {
+		if(titles.size() > 0) {
+			outer:
+			for(int i=0; i<titles.size(); i++){
+					inner:
+					if(titles.get(i).toString().equals(bookToBorrow)){
+						titles.remove(i);
+						System.out.println("You have successfully borrowed " +bookToBorrow);
+						continue outer;
+					}else {
+						break inner;
+					}
 			}
+		}else {
+			System.out.println("This book is not available.");
+
 		}
-	}*/
+	}
 	
 	//printAddress of the correct Library (checkmark)
 	public void printAddress() {
@@ -113,7 +122,7 @@ public class Library{
 	}
 
     public static void main(String[] args) {
-        // Create two libraries
+        // Create two libraries (checkmark)
         Library firstLibrary = new Library("10 Main St.");
         Library secondLibrary = new Library("228 Liberty St.");
 
@@ -135,10 +144,10 @@ public class Library{
 
         // Try to borrow The Lords of the Rings from both libraries
         System.out.println("Borrowing The Lord of the Rings:");
-        /*firstLibrary.borrowBook("The Lord of the Rings");
+        firstLibrary.borrowBook("The Lord of the Rings");
         firstLibrary.borrowBook("The Lord of the Rings");
         secondLibrary.borrowBook("The Lord of the Rings");
-        System.out.println();*/
+        System.out.println();
 
         // Print the titles of all available books from both libraries (checkmark)
         System.out.println("Books available in the first library:");
@@ -153,7 +162,7 @@ public class Library{
         //firstLibrary.returnBook("The Lord of the Rings");
         System.out.println();
 
-        // Print the titles of available from the first library
+        // Print the titles of available from the first library (checkmark)
         System.out.println("Books available in the first library:");
         firstLibrary.printAvailableBooks();
     }
