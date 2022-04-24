@@ -6,31 +6,6 @@ import java.util.List;
 
 public class Library{
 	// Add the missing implementation to this class
-	
-	/*
-	 * Library hours:
-	 * Libraries are open daily from 9am to 5pm.
-	 * Library addresses:
-	 * 10 Main St.
-	 * 228 Liberty St.
-	 * Borrowing The Lord of the Rings:
-	 * You successfully borrowed The Lord of the Rings
-	 * Sorry, this book is already borrowed.
-	 * Sorry, this book is not in our catalog. 
-	 * Books available in the first library:
-	 * The Da Vinci Code
-	 * Le Petit Prince
-	 * A Tale of Two Cities 
-	 * Books available in the second library:
-	 * No book in catalog 
-	 * Returning The Lord of the Rings:
-	 * You successfully returned The Lord of the Rings 
-	 * Books available in the first library:
-	 * The Da Vinci Code
-	 * Le Petit Prince
-	 * A Tale of Two Cities
-	 * The Lord of the Rings
-	 */
 
 	private List<Book> titles = new ArrayList<Book>();
 	private String printAvailableBooks;
@@ -44,15 +19,15 @@ public class Library{
     
     
     // Return a book to the correct Library
-	/*public returnBook(String returnBook) {
-		// TODO Auto-generated method stub
-		 * 
-		 * addBook(list.remove
-		Book returnBookPlease = (Book) returnBook;
-		titles = new ArrayList<Book>();
-		((Library) titles).addBook(returnBook);
-		return returnBook;
-	}*/
+	public void returnBook(String returnBook) {
+	 	if(removeABook.toString().equals(returnBook)){
+	 		titles.add(removeABook);
+	 		System.out.println("You have successfully returned " +returnBook);
+	 	}
+	 	else {
+	 		System.out.println("This book is not from our Library.");
+	 }
+	}
 	
 	//constructor for Library (checkmark)
 	public Library() {
@@ -162,7 +137,7 @@ public class Library{
 
         // Return The Lords of the Rings to the first library
         System.out.println("Returning The Lord of the Rings:");
-        //firstLibrary.returnBook("The Lord of the Rings");
+        firstLibrary.returnBook("The Lord of the Rings");
         System.out.println();
 
         // Print the titles of available from the first library (checkmark)
